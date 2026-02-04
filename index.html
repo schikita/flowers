@@ -15,22 +15,31 @@
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css">
 
+    <link rel="shortcut icon" href="./assets/favicons/favicon.jpg" type="image/x-icon">
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-   
+
 
 
     <link rel="stylesheet" href="./assets/css/main.css">
-     <style>
-     .gh__modal[hidden],
-     .gh__modal[hidden] .gh__modalCard {
-       display: none !important;
-       visibility: hidden !important;
-       pointer-events: none !important;
-     }
-     .gh__modal:not([hidden]) { display: grid !important; }
-     .gh__modal:not([hidden]) .gh__modalCard { display: block !important; visibility: visible !important; }
-   </style>
+    <style>
+        .gh__modal[hidden],
+        .gh__modal[hidden] .gh__modalCard {
+            display: none !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
+
+        .gh__modal:not([hidden]) {
+            display: grid !important;
+        }
+
+        .gh__modal:not([hidden]) .gh__modalCard {
+            display: block !important;
+            visibility: visible !important;
+        }
+    </style>
 
 </head>
 
@@ -148,7 +157,7 @@
     <!-- Lightbox Modal (Placed at end of body as requested) -->
     <div id="lightbox-modal"
         class="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm modal-overlay p-4"
-        role="dialog" aria-modal="true">
+        role="dialog" aria-modal="true" hidden>
         <button id="modal-close"
             class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-[101] p-2"
             aria-label="Закрыть">
@@ -281,131 +290,51 @@
 
     </section>
 
-    <!-- Section with Photo Background and Textify Animation -->
-    <section class="animation-1 relative min-h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=2070&auto=format&fit=crop"
-                alt="Winter Greenhouse" class="w-full h-full object-cover scale-110" id="bg-image">
-            <!-- Dark Overlay -->
-            <div class="absolute inset-0 gradient-overlay"></div>
+
+
+
+    <section id="photo-section-featured" class="photo-featured">
+        <div class="photo-featured__bg">
+            <img src="./assets/img/bg-text-sections-1.jpg" alt="Красивые розы" loading="lazy">
+            <div class="photo-featured__overlay"></div>
         </div>
 
-        <!-- Content Container -->
-        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="photo-featured__content">
+            <div class="photo-featured__grid">
 
-                <!-- Left Column: Animated Text -->
-                <div class="space-y-8">
-                    <!-- Badge -->
-                    <div
-                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-sm">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <span class="text-emerald-400 text-sm font-medium tracking-wider uppercase">Winter Collection
-                            2024</span>
+                <div class="photo-text-block">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                            <i data-lucide="leaf" class="w-5 h-5 text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-white font-semibold text-lg">Экологичный подход</h3>
                     </div>
-
-                    <!-- Main Heading with Textify Animation -->
-                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight">
-                        <span class="textify-line">
-                            <span class="textify-inner">Зимние</span>
-                        </span>
-                        <span class="textify-line">
-                            <span class="textify-inner text-emerald-400">Тюльпаны</span>
-                        </span>
-                        <span class="textify-line">
-                            <span class="textify-inner">Премиум</span>
-                        </span>
-                    </h1>
-
-                    <!-- Subtitle with Textify Animation -->
-                    <p class="text-xl text-gray-300 max-w-lg leading-relaxed">
-                        <span class="textify-line">
-                            <span class="textify-inner">Выращенные в контролируемом климате</span>
-                        </span>
-                        <span class="textify-line">
-                            <span class="textify-inner">с идеальной температурой и светом.</span>
-                        </span>
-                        <span class="textify-line">
-                            <span class="textify-inner">Свежесть, которая удивляет.</span>
-                        </span>
+                    <p class="text-gray-300 leading-relaxed text-sm md:text-base">
+                        Мы используем только органические удобрения и бережные методы выращивания.
+                        Каждый цветок проходит строгий контроль качества перед попаданием в букет.
+                        Наша миссия — приносить радость без вреда для природы.
                     </p>
-
-                    <!-- CTA Buttons with Textify Animation -->
-                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <span class="textify-line !inline-block">
-                            <span class="textify-inner">
-                                <button
-                                    class="group px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full font-semibold transition-all duration-300 flex items-center gap-2 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40">
-                                    Заказать партию
-                                    <i data-lucide="arrow-right"
-                                        class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                                </button>
-                            </span>
-                        </span>
-
-                        <span class="textify-line !inline-block">
-                            <span class="textify-inner">
-                                <button
-                                    class="px-8 py-4 bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold transition-all duration-300 flex items-center gap-2">
-                                    <i data-lucide="play-circle" class="w-5 h-5"></i>
-                                    Смотреть видео
-                                </button>
-                            </span>
-                        </span>
-                    </div>
                 </div>
 
-                <!-- Right Column: Stats Cards -->
-                <div class="hidden lg:block space-y-6">
-                    <div
-                        class="glass-panel p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 transform translate-x-12 opacity-0 stat-card">
-                        <div class="flex items-center gap-4">
-                            <div
-                                class="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400">
-                                <i data-lucide="thermometer-snowflake" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <p class="text-3xl font-bold text-white">+22°C</p>
-                                <p class="text-gray-400 text-sm">Температура в теплице</p>
-                            </div>
+                <div class="photo-text-block">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                            <i data-lucide="truck" class="w-5 h-5 text-cyan-400"></i>
                         </div>
+                        <h3 class="text-white font-semibold text-lg">Бережная доставка</h3>
                     </div>
-
-                    <div class="glass-panel p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 transform translate-x-12 opacity-0 stat-card"
-                        style="margin-left: 2rem;">
-                        <div class="flex items-center gap-4">
-                            <div
-                                class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
-                                <i data-lucide="clock" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <p class="text-3xl font-bold text-white">14 дней</p>
-                                <p class="text-gray-400 text-sm">Жизнь букета</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-panel p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 transform translate-x-12 opacity-0 stat-card"
-                        style="margin-left: 4rem;">
-                        <div class="flex items-center gap-4">
-                            <div
-                                class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
-                                <i data-lucide="truck" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <p class="text-3xl font-bold text-white">24 часа</p>
-                                <p class="text-gray-400 text-sm">Доставка по РФ</p>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="text-gray-300 leading-relaxed text-sm md:text-base">
+                        Специальные термо-контейнеры поддерживают идеальную температуру и влажность
+                        во время транспортировки. Доставка осуществляется круглосуточно
+                        с возможностью точного указания времени получения.
+                    </p>
                 </div>
+
             </div>
         </div>
-
-        <!-- Decorative Elements -->
-        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-slate-950 to-transparent z-20"></div>
     </section>
+
+
 
 
 
@@ -440,7 +369,8 @@
                         <i data-lucide="lightbulb" class="w-8 h-8"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white">LED Фитосвет</h3>
-                    <p class="text-gray-400 leading-relaxed">Спектральный свет для фотосинтеза. Компенсируем недостаток
+                    <p class="text-gray-400 leading-relaxed">Спектральный свет для фотосинтеза. Компенсируем
+                        недостаток
                         солнечного света в короткие зимние дни.</p>
                 </div>
                 <!-- Feature 3 -->
@@ -458,7 +388,7 @@
         </div>
     </section>
 
-    <!-- Section 3: Gallery Grid -->
+
     <!-- Section 3: Gallery Grid WITH BACKGROUND IMAGE -->
     <section id="gallery-grid" class="relative py-24 bg-brand-dark overflow-hidden">
         <!-- Background Image -->
@@ -466,7 +396,8 @@
             <img src="./assets/img/bg-galery.jpg" alt="Gallery Background" loading="lazy"
                 class="w-full h-full object-cover">
             <!-- Dark Overlay для читаемости текста -->
-            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/70 via-brand-dark/80 to-brand-dark/90"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/70 via-brand-dark/80 to-brand-dark/90">
+            </div>
         </div>
 
         <!-- Content -->
@@ -479,8 +410,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 h-[600px] md:h-[500px]">
                 <!-- Large Item -->
                 <div class="lg:col-span-2 lg:row-span-2 relative group overflow-hidden rounded-2xl cursor-pointer reveal"
-                    onclick="openModal(this)"
-                    data-modal-img="./assets/img/galery/01.jpg">
+                    onclick="openModal(this)" data-modal-img="./assets/img/galery/01.jpg">
                     <img src="./assets/img/galery/01.jpg"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         alt="Теплица внутри">
@@ -542,12 +472,8 @@
             <div class="glass-panel rounded-3xl p-2 md:p-4 reveal">
                 <div class="aspect-video w-full bg-black rounded-2xl overflow-hidden relative group">
                     <!-- Poster image used as background if video doesn't load immediately -->
-                    <video controls
-                        poster="./assets/img/video-poster.jpg"
-                        class="w-full h-full object-cover">
-                        <source
-                            src="./assets/videos/video-block.mp4"
-                            type="video/mp4">
+                    <video controls poster="./assets/img/video-poster.jpg" class="w-full h-full object-cover">
+                        <source src="./assets/videos/video-block.mp4" type="video/mp4">
                         Ваш браузер не поддерживает видео.
                     </video>
                     <!-- Custom Play Overlay (optional enhancement, native controls used but styled) -->
@@ -555,7 +481,8 @@
                 <div class="p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
                     <div>
                         <h3 class="text-2xl font-bold text-white mb-2">Экскурсия по тепличному комплексу</h3>
-                        <p class="text-gray-400">Посмотрите, как работают наши системы отопления и освещения зимой.</p>
+                        <p class="text-gray-400">Посмотрите, как работают наши системы отопления и освещения зимой.
+                        </p>
                     </div>
                     <a href="#contact"
                         class="whitespace-nowrap px-6 py-3 bg-white text-slate-900 rounded-full font-bold hover:bg-gray-200 transition-colors">
@@ -567,100 +494,79 @@
     </section>
 
     <!-- Section 5: Assortment Carousel -->
-    <section id="assortment" class="relative py-24 bg-brand-dark">
+    <section id="assortment" class="assortment-section relative py-24">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4">Наш ассортимент</h2>
-                <p class="text-gray-400">Популярные сорта, доступные к поставке прямо сейчас</p>
-            </div>
+            <div class="assortment-slider">
+                <div class="swiper mySwiper pb-12 reveal">
+                    <div class="swiper-wrapper">
 
-            <!-- Swiper -->
-            <div class="swiper mySwiper pb-12 reveal">
-                <div class="swiper-wrapper">
-                    <!-- Slide 1 -->
-                    <div class="swiper-slide h-auto">
-                        <div class="glass-panel p-6 rounded-2xl h-full flex flex-col">
-                            <div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 cursor-pointer"
-                                onclick="openModal(this)"
-                                data-modal-img="https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=2232&auto=format&fit=crop">
-                                <img src="https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=2232&auto=format&fit=crop"
-                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                                    alt="Тюльпаны">
+                        <div class="swiper-slide h-auto">
+                            <div class="glass-panel p-6 rounded-2xl h-full flex flex-col">
+                                <div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 cursor-pointer"
+                                    onclick="openModal(this)" data-modal-img="./assets/img/swiper/04.jpg">
+                                    <img src="./assets/img/swiper/04.jpg"
+                                        class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                                        alt="Тюльпаны">
+                                </div>
                             </div>
-                            <h3 class="text-xl font-bold text-white">Тюльпаны премиум</h3>
-                            <p class="text-emerald-400 text-sm mb-3">Двойной ранний срез</p>
-                            <p class="text-gray-400 text-sm mb-4 flex-grow">Крупноцветковые сорта. Идеальны к 8 марта.
-                                Упаковка по 50 шт.</p>
-                            <button
-                                class="w-full py-2 border border-emerald-500/50 text-emerald-400 rounded-lg hover:bg-emerald-500 hover:text-white transition-colors">Заказать
-                                партию</button>
                         </div>
-                    </div>
-                    <!-- Slide 2 -->
-                    <div class="swiper-slide h-auto">
-                        <div class="glass-panel p-6 rounded-2xl h-full flex flex-col">
-                            <div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 cursor-pointer"
-                                onclick="openModal(this)"
-                                data-modal-img="https://images.unsplash.com/photo-1563241527-3004b7be0ee9?q=80&w=2070&auto=format&fit=crop">
-                                <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ee9?q=80&w=2070&auto=format&fit=crop"
-                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                                    alt="Розы">
+
+                        <div class="swiper-slide h-auto">
+                            <div class="glass-panel p-6 rounded-2xl h-full flex flex-col">
+                                <div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 cursor-pointer"
+                                    onclick="openModal(this)" data-modal-img="./assets/img/swiper/01.jpg">
+                                    <img src="./assets/img/swiper/01.jpg"
+                                        class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                                        alt="Розы">
+                                </div>
                             </div>
-                            <h3 class="text-xl font-bold text-white">Розы Кения</h3>
-                            <p class="text-emerald-400 text-sm mb-3">Высота 60-80см</p>
-                            <p class="text-gray-400 text-sm mb-4 flex-grow">Стойкость 14+ дней. Сорта: Аваланч, Фридом,
-                                Ред Наоми.</p>
-                            <button
-                                class="w-full py-2 border border-emerald-500/50 text-emerald-400 rounded-lg hover:bg-emerald-500 hover:text-white transition-colors">Заказать
-                                партию</button>
                         </div>
-                    </div>
-                    <!-- Slide 3 -->
-                    <div class="swiper-slide h-auto">
-                        <div class="glass-panel p-6 rounded-2xl h-full flex flex-col">
-                            <div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 cursor-pointer"
-                                onclick="openModal(this)"
-                                data-modal-img="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?q=80&w=2070&auto=format&fit=crop">
-                                <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?q=80&w=2070&auto=format&fit=crop"
-                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                                    alt="Хризантемы">
+
+                        <div class="swiper-slide h-auto">
+                            <div class="glass-panel p-6 rounded-2xl h-full flex flex-col">
+                                <div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 cursor-pointer"
+                                    onclick="openModal(this)" data-modal-img="./assets/img/swiper/02.jpg">
+                                    <img src="./assets/img/swiper/02.jpg"
+                                        class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                                        alt="Хризантемы">
+                                </div>
                             </div>
-                            <h3 class="text-xl font-bold text-white">Хризантемы</h3>
-                            <p class="text-emerald-400 text-sm mb-3">Веточные и одиночные</p>
-                            <p class="text-gray-400 text-sm mb-4 flex-grow">Самые неприхотливые зимние цветы. Отличная
-                                переносимость транспортировки.</p>
-                            <button
-                                class="w-full py-2 border border-emerald-500/50 text-emerald-400 rounded-lg hover:bg-emerald-500 hover:text-white transition-colors">Заказать
-                                партию</button>
                         </div>
-                    </div>
-                    <!-- Slide 4 -->
-                    <div class="swiper-slide h-auto">
-                        <div class="glass-panel p-6 rounded-2xl h-full flex flex-col">
-                            <div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 cursor-pointer"
-                                onclick="openModal(this)"
-                                data-modal-img="https://images.unsplash.com/photo-1598880940371-c756e015fea1?q=80&w=2070&auto=format&fit=crop">
-                                <img src="https://images.unsplash.com/photo-1598880940371-c756e015fea1?q=80&w=2070&auto=format&fit=crop"
-                                    class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                                    alt="Гипсофила">
+
+                        <div class="swiper-slide h-auto">
+                            <div class="glass-panel p-6 rounded-2xl h-full flex flex-col">
+                                <div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 cursor-pointer"
+                                    onclick="openModal(this)" data-modal-img="./assets/img/swiper/03.jpg">
+                                    <img src="./assets/img/swiper/03.jpg"
+                                        class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                                        alt="Гипсофила">
+                                </div>
                             </div>
-                            <h3 class="text-xl font-bold text-white">Гипсофила</h3>
-                            <p class="text-emerald-400 text-sm mb-3">Микс цветов</p>
-                            <p class="text-gray-400 text-sm mb-4 flex-grow">Нежный наполнитель для букетов. Выращена в
-                                контролируемых условиях.</p>
-                            <button
-                                class="w-full py-2 border border-emerald-500/50 text-emerald-400 rounded-lg hover:bg-emerald-500 hover:text-white transition-colors">Заказать
-                                партию</button>
                         </div>
+
+                        <div class="swiper-slide h-auto">
+                            <div class="glass-panel p-6 rounded-2xl h-full flex flex-col">
+                                <div class="aspect-[4/3] rounded-xl overflow-hidden mb-4 cursor-pointer"
+                                    onclick="openModal(this)" data-modal-img="./assets/img/swiper/05.jpg">
+                                    <img src="./assets/img/swiper/05.jpg"
+                                        class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                                        alt="Гипсофила">
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+
+                    <div class="swiper-pagination"></div>
                 </div>
-                <div class="swiper-pagination"></div>
-                <!-- Custom Navigation Buttons styled with Tailwind classes applied via JS or direct HTML below -->
-                <div class="swiper-button-next !text-emerald-400 after:!text-2xl"></div>
-                <div class="swiper-button-prev !text-emerald-400 after:!text-2xl"></div>
+
+                <!-- Стрелки ВНЕ swiper -->
+                <button class="assortment-nav assortment-nav--prev" type="button" aria-label="Назад"></button>
+                <button class="assortment-nav assortment-nav--next" type="button" aria-label="Вперёд"></button>
             </div>
         </div>
     </section>
+
 
     <!-- Section 6: Process Steps -->
     <section id="process" class="relative py-24 bg-slate-900">
@@ -671,7 +577,8 @@
 
             <div class="relative">
                 <!-- Connecting Line (Desktop) -->
-                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-700 -translate-y-1/2 z-0"></div>
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-700 -translate-y-1/2 z-0">
+                </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
                     <!-- Step 1 -->
@@ -691,7 +598,8 @@
                             class="w-16 h-16 bg-brand-dark border-2 border-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-400 text-xl font-bold group-hover:scale-110 transition-transform">
                             2</div>
                         <h3 class="text-lg font-bold text-white mb-2">Выращивание</h3>
-                        <p class="text-gray-400 text-sm">Контроль климата, LED подсветка и точный полив для идеального
+                        <p class="text-gray-400 text-sm">Контроль климата, LED подсветка и точный полив для
+                            идеального
                             стебля.</p>
                     </div>
                     <!-- Step 3 -->
@@ -701,7 +609,8 @@
                             class="w-16 h-16 bg-brand-dark border-2 border-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-400 text-xl font-bold group-hover:scale-110 transition-transform">
                             3</div>
                         <h3 class="text-lg font-bold text-white mb-2">Срез</h3>
-                        <p class="text-gray-400 text-sm">Ручной сбор в фазе бутона. Немедленная охлаждение до +4°C.</p>
+                        <p class="text-gray-400 text-sm">Ручной сбор в фазе бутона. Немедленная охлаждение до +4°C.
+                        </p>
                     </div>
                     <!-- Step 4 -->
                     <div class="glass-panel-dark p-6 rounded-xl text-center reveal group hover:bg-slate-800 transition-colors"
@@ -710,7 +619,8 @@
                             class="w-16 h-16 bg-brand-dark border-2 border-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-400 text-xl font-bold group-hover:scale-110 transition-transform">
                             4</div>
                         <h3 class="text-lg font-bold text-white mb-2">Логистика</h3>
-                        <p class="text-gray-400 text-sm">Термо-фургоны с поддержанием холода. Доставка за 24 часа.</p>
+                        <p class="text-gray-400 text-sm">Термо-фургоны с поддержанием холода. Доставка за 24 часа.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -734,8 +644,10 @@
                                 <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                                 <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                             </div>
-                            <p class="text-gray-300 mb-6 italic">"Заказывали партию тюльпанов к 8 марта. Цветы простояли
-                                у нас в магазине больше недели без потери товарного вида. Лучший поставщик в регионе."
+                            <p class="text-gray-300 mb-6 italic">"Заказывали партию тюльпанов к 8 марта. Цветы
+                                простояли
+                                у нас в магазине больше недели без потери товарного вида. Лучший поставщик в
+                                регионе."
                             </p>
                             <div class="flex items-center gap-4">
                                 <div
@@ -781,7 +693,8 @@
                                 <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                                 <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                             </div>
-                            <p class="text-gray-300 mb-6 italic">"Сотрудничаем второй год. Качество стабильно высокое,
+                            <p class="text-gray-300 mb-6 italic">"Сотрудничаем второй год. Качество стабильно
+                                высокое,
                                 цены адекватные. Особенно ценим честность по срокам хранения."</p>
                             <div class="flex items-center gap-4">
                                 <div
@@ -833,7 +746,8 @@
                     </button>
                     <div class="accordion-content bg-slate-900/50">
                         <div class="px-6 pb-4 text-gray-400">
-                            Мы используем рефрижераторы (термо-фургоны) с поддержанием температуры +2...+5°C. Даже при
+                            Мы используем рефрижераторы (термо-фургоны) с поддержанием температуры +2...+5°C. Даже
+                            при
                             -30°C за бортом цветы не замерзают.
                         </div>
                     </div>
@@ -864,12 +778,17 @@
                 class="w-full h-full object-cover opacity-30">
             <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/90 to-brand-dark/80"></div>
         </div>
+
         <div class="max-w-5xl mx-auto px-4 relative z-10">
             <div class="grid md:grid-cols-2 gap-12 items-center">
+
+                <!-- Text Content -->
                 <div class="reveal">
                     <h2 class="text-4xl font-bold mb-6">Узнайте больше о нашей технологии</h2>
-                    <p class="text-gray-300 mb-8 text-lg">Подробный разбор системы отопления и света, который позволяет
-                        нам растить летние цветы в суровой зиме.</p>
+                    <p class="text-gray-300 mb-8 text-lg">
+                        Подробный разбор системы отопления и света, который позволяет нам растить летние цветы в суровой
+                        зиме.
+                    </p>
                     <div class="flex gap-4">
                         <button
                             class="px-8 py-4 bg-white text-slate-900 rounded-full font-bold hover:bg-gray-200 transition-colors">
@@ -877,128 +796,151 @@
                         </button>
                     </div>
                 </div>
-                <div class="aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 reveal"
+
+                <!-- Video Container with Lazy Loading -->
+                <div id="video-container"
+                    class="aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 reveal bg-slate-800/50 relative"
                     style="transition-delay: 200ms;">
-                    <iframe width="100%" height="100%"
-                        src="./assets/videos/end-videos.mp4"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                    </iframe>
+
+                    <!-- Placeholder / Preview Image -->
+                    <div id="video-placeholder"
+                        class="absolute inset-0 flex items-center justify-center cursor-pointer group">
+                        <img src="https://images.unsplash.com/photo-1530836369250-ef7208b5a1b8?q=80&w=2070&auto=format&fit=crop"
+                            alt="Video preview"
+                            class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-300">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div
+                                class="w-20 h-20 rounded-full bg-emerald-500/90 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-emerald-500/30">
+                                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="absolute bottom-4 text-white/80 text-sm font-medium">Нажмите для воспроизведения</p>
+                    </div>
+
+                    <!-- Actual Video (loaded dynamically) -->
+                    <video id="lazy-video" class="w-full h-full object-cover hidden" controls playsinline
+                        preload="none">
+                        <source data-src="./assets/videos/end-videos.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео.
+                    </video>
                 </div>
+
             </div>
         </div>
+
     </section>
 
     <section class="gh" id="ghGreenhouse" aria-label="Игра Цветочная теплица">
-        <div class="gh__shell">
-            <div class="gh__start" id="ghStartScreen">
-                <div class="gh__startCard">
-                    <div class="gh__title">Цветочная теплица</div>
-                    <div class="gh__subtitle">
-                        Засей грядки, поливай каждые 5 секунд, собирай цветы и набирай очки за 90 секунд.
-                    </div>
-                    <button class="gh__startBtn" id="ghStartBtn" type="button">Начать игру</button>
+    <div class="gh__shell">
+        <div class="gh__start" id="ghStartScreen">
+            <div class="gh__startCard">
+                <div class="gh__title">Цветочная теплица</div>
+                <div class="gh__subtitle">
+                    Засей грядки, поливай каждые 5 секунд, собирай цветы и набирай очки за 90 секунд.
                 </div>
+                <button class="gh__startBtn" id="ghStartBtn" type="button">Начать игру</button>
+            </div>
+        </div>
+
+        <div class="gh__game" id="ghGame" hidden>
+            <div class="gh__topbar">
+                <div class="gh__stat">
+                    <div class="gh__statLabel">Время</div>
+                    <div class="gh__statValue" id="ghTime">01:30</div>
+                </div>
+                <div class="gh__stat">
+                    <div class="gh__statLabel">Очки</div>
+                    <div class="gh__statValue" id="ghScore">0</div>
+                </div>
+                <div class="gh__hint" id="ghMessage">Выбери инструмент и нажми на грядку.</div>
             </div>
 
-            <div class="gh__game" id="ghGame" hidden>
-                <div class="gh__topbar">
-                    <div class="gh__stat">
-                        <div class="gh__statLabel">Время</div>
-                        <div class="gh__statValue" id="ghTime">01:30</div>
-                    </div>
-                    <div class="gh__stat">
-                        <div class="gh__statLabel">Очки</div>
-                        <div class="gh__statValue" id="ghScore">0</div>
-                    </div>
-                    <div class="gh__hint" id="ghMessage">Выбери инструмент и нажми на грядку.</div>
-                </div>
+            <div class="gh__layout">
+                <aside class="gh__tools" aria-label="Инструменты">
+                    <button class="gh__tool is-selected" type="button" data-tool="hand">
+                        <span class="gh__toolIcon" aria-hidden="true">✋</span>
+                        <span class="gh__toolText">Рука</span>
+                    </button>
 
-                <div class="gh__layout">
-                    <aside class="gh__tools" aria-label="Инструменты">
-                        <button class="gh__tool is-selected" type="button" data-tool="hand">
-                            <span class="gh__toolIcon" aria-hidden="true">✋</span>
-                            <span class="gh__toolText">Рука</span>
+                    <button class="gh__tool" type="button" data-tool="seeds">
+                        <span class="gh__toolIcon" aria-hidden="true">🌾</span>
+                        <span class="gh__toolText">Семена</span>
+                    </button>
+
+                    <button class="gh__tool" type="button" data-tool="water">
+                        <span class="gh__toolIcon" aria-hidden="true">💧</span>
+                        <span class="gh__toolText">Лейка</span>
+                    </button>
+
+                    <button class="gh__tool" type="button" data-tool="harvest">
+                        <span class="gh__toolIcon" aria-hidden="true">🧺</span>
+                        <span class="gh__toolText">Собрать</span>
+                    </button>
+
+                    <button class="gh__tool" type="button" data-tool="cut">
+                        <span class="gh__toolIcon" aria-hidden="true">✂️</span>
+                        <span class="gh__toolText">Срезать</span>
+                    </button>
+
+
+                </aside>
+
+                <div class="gh__beds" aria-label="Грядки">
+                    <div class="gh__grid" id="ghBedsGrid">
+                        <button class="gh__bed" type="button" data-bed="0" aria-label="Грядка 1">
+                            <div class="gh__bedIcon" aria-hidden="true">🟫</div>
+                            <div class="gh__bedText">Пусто</div>
                         </button>
-
-                        <button class="gh__tool" type="button" data-tool="seeds">
-                            <span class="gh__toolIcon" aria-hidden="true">🌾</span>
-                            <span class="gh__toolText">Семена</span>
+                        <button class="gh__bed" type="button" data-bed="1" aria-label="Грядка 2">
+                            <div class="gh__bedIcon" aria-hidden="true">🟫</div>
+                            <div class="gh__bedText">Пусто</div>
                         </button>
-
-                        <button class="gh__tool" type="button" data-tool="water">
-                            <span class="gh__toolIcon" aria-hidden="true">💧</span>
-                            <span class="gh__toolText">Лейка</span>
+                        <button class="gh__bed" type="button" data-bed="2" aria-label="Грядка 3">
+                            <div class="gh__bedIcon" aria-hidden="true">🟫</div>
+                            <div class="gh__bedText">Пусто</div>
                         </button>
-
-                        <button class="gh__tool" type="button" data-tool="harvest">
-                            <span class="gh__toolIcon" aria-hidden="true">🧺</span>
-                            <span class="gh__toolText">Собрать</span>
+                        <button class="gh__bed" type="button" data-bed="3" aria-label="Грядка 4">
+                            <div class="gh__bedIcon" aria-hidden="true">🟫</div>
+                            <div class="gh__bedText">Пусто</div>
                         </button>
-
-                        <button class="gh__tool" type="button" data-tool="cut">
-                            <span class="gh__toolIcon" aria-hidden="true">✂️</span>
-                            <span class="gh__toolText">Срезать</span>
+                        <button class="gh__bed" type="button" data-bed="4" aria-label="Грядка 5">
+                            <div class="gh__bedIcon" aria-hidden="true">🟫</div>
+                            <div class="gh__bedText">Пусто</div>
                         </button>
-
-
-                    </aside>
-
-                    <div class="gh__beds" aria-label="Грядки">
-                        <div class="gh__grid" id="ghBedsGrid">
-                            <button class="gh__bed" type="button" data-bed="0" aria-label="Грядка 1">
-                                <div class="gh__bedIcon" aria-hidden="true">🟫</div>
-                                <div class="gh__bedText">Пусто</div>
-                            </button>
-                            <button class="gh__bed" type="button" data-bed="1" aria-label="Грядка 2">
-                                <div class="gh__bedIcon" aria-hidden="true">🟫</div>
-                                <div class="gh__bedText">Пусто</div>
-                            </button>
-                            <button class="gh__bed" type="button" data-bed="2" aria-label="Грядка 3">
-                                <div class="gh__bedIcon" aria-hidden="true">🟫</div>
-                                <div class="gh__bedText">Пусто</div>
-                            </button>
-                            <button class="gh__bed" type="button" data-bed="3" aria-label="Грядка 4">
-                                <div class="gh__bedIcon" aria-hidden="true">🟫</div>
-                                <div class="gh__bedText">Пусто</div>
-                            </button>
-                            <button class="gh__bed" type="button" data-bed="4" aria-label="Грядка 5">
-                                <div class="gh__bedIcon" aria-hidden="true">🟫</div>
-                                <div class="gh__bedText">Пусто</div>
-                            </button>
-                            <button class="gh__bed" type="button" data-bed="5" aria-label="Грядка 6">
-                                <div class="gh__bedIcon" aria-hidden="true">🟫</div>
-                                <div class="gh__bedText">Пусто</div>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="gh__rules gh__rules--footer">
-                        <div class="gh__rulesTitle">Правила</div>
-                        <ul class="gh__rulesList">
-                            <li>Рост обновляется каждые 5 секунд.</li>
-                            <li>Без полива на фазах 1–2 рост стоит.</li>
-                            <li>Без полива на фазах 3–4 растение вянет.</li>
-                            <li>Созревшее — собрать (очки). Завявшее — срезать (без очков).</li>
-                        </ul>
+                        <button class="gh__bed" type="button" data-bed="5" aria-label="Грядка 6">
+                            <div class="gh__bedIcon" aria-hidden="true">🟫</div>
+                            <div class="gh__bedText">Пусто</div>
+                        </button>
                     </div>
                 </div>
-            </div>
-
-            <div class="gh__modal" id="ghModal" hidden role="dialog" aria-modal="true" aria-label="Результат игры">
-                <div class="gh__modalCard">
-                    <div class="gh__modalTitle">Игра окончена</div>
-                    <div class="gh__modalScore">
-                        Очки: <span id="ghFinalScore">0</span>
-                    </div>
-                    <div class="gh__modalPhrase" id="ghFinalPhrase">Результат</div>
-                    <div class="gh__modalActions">
-                        <button class="gh__startBtn" id="ghRestartBtn" type="button">Сыграть ещё раз</button>
-                        <button class="gh__ghostBtn" id="ghCloseBtn" type="button">Закрыть</button>
-                    </div>
+                <div class="gh__rules gh__rules--footer">
+                    <div class="gh__rulesTitle">Правила</div>
+                    <ul class="gh__rulesList">
+                        <li>Рост обновляется каждые 5 секунд.</li>
+                        <li>Без полива на фазах 1–2 рост стоит.</li>
+                        <li>Без полива на фазах 3–4 растение вянет.</li>
+                        <li>Созревшее — собрать (очки). Завявшее — срезать (без очков).</li>
+                    </ul>
                 </div>
             </div>
         </div>
+
+        <div class="gh__modal" id="ghModal" hidden role="dialog" aria-modal="true" aria-label="Результат игры">
+            <div class="gh__modalCard">
+                <div class="gh__modalTitle">Игра окончена</div>
+                <div class="gh__modalScore">
+                    Очки: <span id="ghFinalScore">0</span>
+                </div>
+                <div class="gh__modalPhrase" id="ghFinalPhrase">Результат</div>
+                <div class="gh__modalActions">
+                    <button class="gh__startBtn" id="ghRestartBtn" type="button">Сыграть ещё раз</button>
+                    <button class="gh__ghostBtn" id="ghCloseBtn" type="button">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
     </section>
 
 
@@ -1068,12 +1010,12 @@
         <i data-lucide="arrow-up" class="w-6 h-6"></i>
     </button>
 
-  
-    <script src="./assets/js/swiper-bundle.min.js"></script>
-    <script src="./assets/js/ScrollTrigger.min.js"></script>
-    <script src="./assets/js/gsap.min.js"></script>
 
+    <script src="./assets/js/swiper-bundle.min.js"></script>
+    <script src="./assets/js/gsap.min.js"></script>
+    <script src="./assets/js/ScrollTrigger.min.js"></script>
     <script src="./assets/js/main.js"></script>
+
 </body>
 
 </html>
