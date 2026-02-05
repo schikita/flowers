@@ -1696,8 +1696,14 @@ body {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: 16px;
-  padding: 24px;
+  padding: 24px;  
 }
+
+.photo-featured__content p {
+  font-size: clamp(18px, 1.35vw, 18px);
+  line-height: 1.75;
+}
+
 
 @media (min-width: 768px) {
   .photo-text-block {
@@ -1823,7 +1829,7 @@ body {
     top: 24px;
     right: 24px;
     bottom: 24px;
-    width: 38%;
+    width: 40%;
     z-index: 30;
     pointer-events: none; /* чтобы не мешал кликам по фото/эффектам */
   }
@@ -2059,4 +2065,209 @@ body {
 #assortment .stat-caption{
   font-size: 13px;
   line-height: 1.45;
+}
+
+
+#winter-roses .video-dim{
+  /* Базовое затемнение */
+  background: rgba(2, 6, 23, 0.411);
+
+  /* Градиент сверху/снизу + лёгкая виньетка */
+  background:
+    radial-gradient(circle at 50% 55%, rgba(2,6,23,0.20) 0%, rgba(2, 6, 23, 0.5) 70%, rgba(2, 6, 23, 0.575) 100%),
+    linear-gradient(180deg, rgba(2, 6, 23, 0.548) 0%, rgba(2,6,23,0.35) 35%, rgba(2, 6, 23, 0.527) 100%);
+}
+
+
+#march-8 {
+    background:
+    linear-gradient(rgba(0,0,0,.56), rgba(0,0,0,.52)),
+    url("../img/bg-s.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover;
+}
+
+.holiday-rush {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 96px 0;
+  background: url('../img/bg-sueta.jpg');
+}
+
+.holiday-rush__bg {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: scale(1.04);
+  opacity: 0;
+  transition: opacity 600ms ease;
+  will-change: transform, opacity;
+}
+
+.holiday-rush__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.80);
+}
+
+.holiday-rush__container {
+  position: relative;
+  z-index: 2;
+  width: min(980px, 100%);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.holiday-rush__title {
+  margin: 0 0 24px;
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-size: clamp(40px, 6vw, 72px);
+}
+
+.holiday-rush__text {
+  color: rgba(226, 232, 240, 0.92);
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.75;
+}
+
+.holiday-rush__text p {
+  margin: 0 0 18px;
+}
+
+.holiday-rush__quote {
+  margin: 28px 0 0;
+  padding: 16px 18px 16px 20px;
+ 
+  background: rgba(2, 6, 23, 0.35);
+  border-radius: 12px;
+}
+
+.holiday-rush__quote p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-style: italic;
+}
+
+.holiday-rush.is-bg-loaded .holiday-rush__bg {
+  opacity: 1;
+}
+
+.holiday-rush.is-bg-error .holiday-rush__bg {
+  opacity: 1;
+  background-image:
+    radial-gradient(1200px 700px at 20% 10%, rgba(244, 63, 94, 0.25), transparent 60%),
+    radial-gradient(900px 600px at 80% 60%, rgba(59, 130, 246, 0.20), transparent 55%),
+    linear-gradient(180deg, rgba(2, 6, 23, 0.9), rgba(2, 6, 23, 0.65));
+}
+
+
+/* ===== Section: women-work ===== */
+
+.women-work {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end; /* контент внизу */
+  background: #0b1220;   /* запасной фон, если картинка не загрузится */
+}
+
+.women-work__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.women-work__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.03);
+}
+
+.women-work__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Затемнение снизу для читаемости (аналог bg-gradient-to-t ...) */
+  background: linear-gradient(
+    to top,
+    rgba(15, 23, 42, 0.95) 0%,
+    rgba(15, 23, 42, 0.65) 45%,
+    rgba(15, 23, 42, 0.00) 100%
+  );
+}
+
+.women-work__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 120px 0 64px; /* top/bottom как в tailwind pt-32 pb-16 */
+}
+
+.women-work__container {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.women-work__title {
+  margin: 0 0 22px;
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  font-size: clamp(44px, 6vw, 80px);
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.women-work__text {
+  width: min(880px, 100%);
+  color: rgba(226, 232, 240, 0.92);
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.75;
+}
+
+.women-work__text p {
+  margin: 0 0 18px;
+}
+
+.women-work__quote {
+  margin: 22px 0;
+  padding: 14px 16px 14px 18px;
+  background: rgba(2, 6, 23, 0.38);
+  border-radius: 14px;
+  backdrop-filter: blur(4px);
+}
+
+.women-work__quote p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-style: italic;
+}
+
+/* Чуть компактнее на очень узких экранах */
+@media (max-width: 480px) {
+  .women-work__content {
+    padding: 92px 0 52px;
+  }
+
+  .women-work__container {
+    padding: 0 18px;
+  }
+
+  .women-work__text {
+    line-height: 1.7;
+  }
 }

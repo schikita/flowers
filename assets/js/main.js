@@ -77,7 +77,11 @@ function initHeaderAndMobileMenu() {
   if (mobileMenuBtn && mobileMenuOverlay) {
     mobileMenuBtn.addEventListener("click", () => {
       mobileMenuOverlay.classList.toggle("open");
-      document.body.style.overflow = mobileMenuOverlay.classList.contains("open") ? "hidden" : "";
+      document.body.style.overflow = mobileMenuOverlay.classList.contains(
+        "open",
+      )
+        ? "hidden"
+        : "";
     });
 
     mobileLinks.forEach((link) => {
@@ -132,7 +136,8 @@ function initSwiper() {
   const assortmentSwiperEl = document.querySelector(".mySwiper");
   if (assortmentSwiperEl) {
     try {
-      const assortmentRoot = assortmentSwiperEl.closest(".assortment-slider") || document;
+      const assortmentRoot =
+        assortmentSwiperEl.closest(".assortment-slider") || document;
 
       new Swiper(assortmentSwiperEl, {
         slidesPerView: 1,
@@ -163,7 +168,9 @@ function initSwiper() {
         slidesPerView: 1,
         spaceBetween: 30,
         pagination: {
-          el: reviewsSwiperEl.querySelector(".swiper-pagination") || ".swiper-pagination",
+          el:
+            reviewsSwiperEl.querySelector(".swiper-pagination") ||
+            ".swiper-pagination",
           clickable: true,
         },
         breakpoints: {
@@ -510,7 +517,14 @@ function initGreenhouseGame() {
     const el = bedElByIndex(index);
     if (!el) return;
 
-    el.classList.remove("state-empty", "state-g1", "state-g2", "state-g3", "state-g4", "state-wilted");
+    el.classList.remove(
+      "state-empty",
+      "state-g1",
+      "state-g2",
+      "state-g3",
+      "state-g4",
+      "state-wilted",
+    );
     el.classList.add(`state-${bed.stage}`);
 
     const iconEl = el.querySelector(".gh__bedIcon");
@@ -538,9 +552,11 @@ function initGreenhouseGame() {
   }
 
   function getPhraseByScore(points) {
-    if (points >= 120) return "Отличный результат. Управление теплицей на уровне.";
+    if (points >= 120)
+      return "Отличный результат. Управление теплицей на уровне.";
     if (points >= 70) return "Хорошо. Чуть больше темпа и будет максимум.";
-    if (points >= 30) return "Неплохо. Сфокусируйся на регулярном поливе каждые 5 секунд.";
+    if (points >= 30)
+      return "Неплохо. Сфокусируйся на регулярном поливе каждые 5 секунд.";
     return "Нужно потренироваться: без воды растения либо стоят, либо вянут.";
   }
 
@@ -672,7 +688,10 @@ function initGreenhouseGame() {
         return;
       }
       bed.watered = true;
-      setMessage("Полив учтён. Рост/проверка произойдёт на следующем тике (5 сек).", "ok");
+      setMessage(
+        "Полив учтён. Рост/проверка произойдёт на следующем тике (5 сек).",
+        "ok",
+      );
       waterFx(el);
       popBed(el);
       return;
@@ -774,25 +793,109 @@ onReady(() => {
   initLucide();
 });
 
-
 (function () {
-  var photo = document.querySelector('[data-interview-photo]');
+  var photo = document.querySelector("[data-interview-photo]");
   if (!photo) return;
 
-  var notes = document.querySelectorAll('#interview .grower-note');
+  var notes = document.querySelectorAll("#interview .grower-note");
 
   var started = false;
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting || started) return;
-      started = true;
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting || started) return;
+        started = true;
 
-      photo.classList.add('is-active');
-      notes.forEach(function (n) { n.classList.add('is-active'); });
+        photo.classList.add("is-active");
+        notes.forEach(function (n) {
+          n.classList.add("is-active");
+        });
 
-      observer.disconnect();
-    });
-  }, { threshold: 0.25 });
+        observer.disconnect();
+      });
+    },
+    { threshold: 0.25 },
+  );
 
   observer.observe(photo);
 })();
+
+(function () {
+  const slides = document.querySelectorAll(".photo-slide");
+  const dots = document.querySelectorAll(".slide-dot");
+  let current = 0;
+  const total = slides.length;
+
+  function showSlide(index) {
+    // Выцветание текущего
+    slides.forEach((slide, i) => {
+      slide.style.opacity = i === index ? "1" : "0";
+    });
+
+    // Обновление точек
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("bg-white", i === index);
+      dot.classList.toggle("bg-white/40", i !== index);
+    });
+
+    current = index;
+  }
+
+  // Автосмена каждые 4 секунды
+  setInterval(() => {
+    showSlide((current + 1) % total);
+  }, 4000);
+
+  // Клик по точкам
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => showSlide(index));
+  });
+})();
+
+const poster = document.getElementById('video-poster');
+const video = document.getElementById('march-video');
+const pauseIndicator = document.getElementById('pause-indicator');
+const playBtn = document.getElementById('play-btn');
+
+// Запуск видео
+function startVideo(e) {
+    if (e) e.stopPropagation();
+    
+    if (!video.querySelector('source')) {
+        const source = document.createElement('source');
+        source.src = './assets/videos/vertical-video.mp4';
+        source.type = 'video/mp4';
+        video.appendChild(source);
+    }
+    
+    video.classList.remove('hidden');
+    poster.style.opacity = '0';
+    
+    setTimeout(() => {
+        poster.style.display = 'none';
+    }, 300);
+    
+    video.load();
+    video.muted = false;
+    video.play().catch(e => console.log('Autoplay prevented:', e));
+}
+
+// Пауза/воспроизведение при клике на видео
+function togglePause(e) {
+    e.stopPropagation();
+    
+    if (video.paused) {
+        video.play();
+    } else {
+        video.pause();
+        // Показать индикатор паузы
+        pauseIndicator.style.opacity = '1';
+        setTimeout(() => {
+            pauseIndicator.style.opacity = '0';
+        }, 800);
+    }
+}
+
+poster.addEventListener('click', startVideo);
+playBtn.addEventListener('click', startVideo);
+video.addEventListener('click', togglePause);
