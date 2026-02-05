@@ -1850,6 +1850,7 @@ body {
   padding: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 12px;
 }
 
@@ -1957,3 +1958,52 @@ body {
   }
 }
 
+#video-feature {
+  background: url('../img/bg-video-section.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#video-feature .video-feature-layout{
+  display: flex;
+  flex-direction: column;    /* мобилка: видео сверху, текст снизу */
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* десктоп: видео слева, текст справа */
+@media (min-width: 1024px){
+  #video-feature .video-feature-layout{
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+  }
+
+  #video-feature .video-feature-media{
+    flex: 0 0 58%;
+    max-width: 58%;
+  }
+
+  #video-feature .video-feature-text{
+    flex: 1 1 auto;
+    max-width: 42%;
+  }
+}
+
+/* контейнер 16:9 без tailwind aspect-video */
+#video-feature .video-feature-box{
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  background: #000;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+#video-feature .video-feature-video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

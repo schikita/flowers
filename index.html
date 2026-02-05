@@ -336,13 +336,10 @@
         </div>
     </section>
 
-
-
-
-
     <section id="interview" class="relative py-24 px-4 bg-slate-900 overflow-hidden">
-        <div class="absolute inset-0 opacity-20"
-            style="background-image:url('https://www.transparenttextures.com/patterns/dark-matter.png');"></div>
+        <div class="absolute inset-0 opacity-20" style="background-image:url('./assets/img/bg-interview.jpg'); background-repeat: no-repeat;
+       background-size: cover;
+       background-position: center;"></div>
 
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="interview-grid gap-12 items-stretch">
@@ -400,7 +397,7 @@
 
                 <!-- Комментарий цветовода (MOBILE: ниже фото) -->
                 <aside class="grower-note grower-note--mobile">
-                    <div class="grower-note__inner">                       
+                    <div class="grower-note__inner">
 
                         <div class="space-y-3 font-medium text-white">
                             <p class="typewriter-line" style="--delay: 1s;">— У нас здесь лето круглый год,</p>
@@ -505,30 +502,48 @@
     <!-- Section 4: Video Feature (HTML5) -->
     <section id="video-feature" class="relative py-24 bg-slate-950 overflow-hidden">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-emerald-900/10 blur-3xl rounded-full"></div>
+
         <div class="max-w-6xl mx-auto px-4 relative z-10">
             <div class="glass-panel rounded-3xl p-2 md:p-4 reveal">
-                <div class="aspect-video w-full bg-black rounded-2xl overflow-hidden relative group">
-                    <!-- Poster image used as background if video doesn't load immediately -->
-                    <video controls poster="./assets/img/video-poster.jpg" class="w-full h-full object-cover">
-                        <source src="./assets/videos/video-block.mp4" type="video/mp4">
-                        Ваш браузер не поддерживает видео.
-                    </video>
-                    <!-- Custom Play Overlay (optional enhancement, native controls used but styled) -->
-                </div>
-                <div class="p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Экскурсия по тепличному комплексу</h3>
-                        <p class="text-gray-400">Посмотрите, как работают наши системы отопления и освещения зимой.
-                        </p>
+
+                <div class="video-feature-layout">
+                    <!-- ВИДЕО (слева на десктопе) -->
+                    <div class="video-feature-media">
+                        <div class="video-feature-box">
+                            <video controls poster="./assets/img/video-poster.jpg" class="video-feature-video">
+                                <source src="./assets/videos/video-block.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
+                        </div>
                     </div>
-                    <a href="#contact"
-                        class="whitespace-nowrap px-6 py-3 bg-white text-slate-900 rounded-full font-bold hover:bg-gray-200 transition-colors">
-                        Записаться на экскурсию
-                    </a>
+
+                    <!-- ТЕКСТ (справа на десктопе) -->
+                    <div class="video-feature-text">
+                        <h3 class="text-2xl font-bold text-white mb-4">Экскурсия по тепличному комплексу</h3>
+
+                        <div class="text-gray-300 leading-relaxed space-y-4">
+                            <p>
+                                Теплицы с розами на территории комбината занимают 6 тысяч квадратных метров. В прошлом
+                                году эти площади засадили новыми гибридными сортами – цветы стали еще краше и
+                                устойчивее.
+                            </p>
+                            <p>
+                                – Кусты теперь более продуктивные, то есть мы можем получить больше срезанных цветов, –
+                                поясняет заместитель генерального директора по производству Андрей Морозов. – Кроме
+                                того, улучшили товарные качества роз. У них увеличилась ростовка: если раньше на старых
+                                кустах срезали в основном цветы длиной от 30 до 50 сантиметров, то сейчас – от 50 до 80.
+                                Увеличился и диаметр бутона: при раскрытии он достигает 12 сантиметров. Это тоже важный
+                                показатель.
+                            </p>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
+
+
 
     <!-- Section 5: Assortment Carousel -->
     <section id="assortment" class="assortment-section relative py-24">
