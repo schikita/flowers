@@ -773,3 +773,26 @@ onReady(() => {
   // можно повторно прогнать lucide после динамических вставок
   initLucide();
 });
+
+
+(function () {
+  var photo = document.querySelector('[data-interview-photo]');
+  if (!photo) return;
+
+  var notes = document.querySelectorAll('#interview .grower-note');
+
+  var started = false;
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting || started) return;
+      started = true;
+
+      photo.classList.add('is-active');
+      notes.forEach(function (n) { n.classList.add('is-active'); });
+
+      observer.disconnect();
+    });
+  }, { threshold: 0.25 });
+
+  observer.observe(photo);
+})();
