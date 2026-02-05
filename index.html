@@ -620,61 +620,78 @@
     </section>
 
 
-    <!-- Section 6: Process Steps -->
-    <section id="process" class="relative py-24 bg-slate-900">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4">От семени до букета</h2>
-            </div>
 
-            <div class="relative">
-                <!-- Connecting Line (Desktop) -->
-                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-700 -translate-y-1/2 z-0">
+    <section id="assortment" class="relative py-24 bg-slate-900 overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div
+                class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_50%,_#f43f5e_0%,_transparent_50%)]">
+            </div>
+            <div
+                class="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_80%,_#fb7185_0%,_transparent_50%)]">
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <!-- добавили обёртку для “прижать влево” -->
+            <div class="assortment-wrap">
+
+                <!-- Вводный текст -->
+                <div class="assortment-text mb-16 reveal">
+                    <p class="text-black leading-relaxed">
+                        Также, по словам Андрея Морозова, изменилась и цветовая палитра роз. В этом вопросе
+                        ориентировались
+                        на покупательский спрос. У парниково-тепличного комбината 11 фирменных цветочных магазинов.
+                        Именно
+                        по рекомендациям работающих там флористов и формировался сортовой перечень будущей коллекции.
+                    </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
-                    <!-- Step 1 -->
+                <!-- Цитата директора -->
+                <div class="glass-panel-dark p-8 md:p-10 rounded-2xl mb-16 relative overflow-hidden reveal">
+                    <blockquote class="relative z-10">
+                        <p class="text-white font-medium italic mb-6">
+                            — Раньше, когда спрос на розу был небольшой и она в основном привозилась из-за рубежа,
+                            ассортимент был ограничен: красная, белая и желтая. Сейчас покупатель избалован и хочет
+                            разнообразия. Поэтому все, что требовали наши торговые объекты, мы попытались реализовать на
+                            своих площадках, – отмечает Андрей Морозов.
+                        </p>
+                    </blockquote>
+                </div>
+
+                <div class="assortment-text mb-16 reveal">
+                    <p class="text-gray-300 leading-relaxed">
+                        Сейчас в теплицах растет 20 сортов. Здесь собрали 12 лучших и самых популярных гибридов. Из них
+                        наиболее покупаемые розы – это белая с розовой каймой «джумилия» и красная «ред наоми».
+                    </p>
+                </div>
+
+                <!-- Статистика сортов -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
                     <div
-                        class="glass-panel-dark p-6 rounded-xl text-center reveal group hover:bg-slate-800 transition-colors">
+                        class="glass-panel-dark p-6 rounded-xl text-center reveal group hover:bg-slate-800/50 transition-all duration-300">
                         <div
-                            class="w-16 h-16 bg-brand-dark border-2 border-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-400 text-xl font-bold group-hover:scale-110 transition-transform">
-                            1</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Посадка</h3>
-                        <p class="text-gray-400 text-sm">Стерильный субстрат и премиальный посадочный материал из
-                            Голландии.</p>
+                            class="stat-number font-bold text-rose-400 mb-2 group-hover:scale-110 transition-transform">
+                            20</div>
+                        <p class="stat-caption text-gray-400">сортов растёт<br>в теплицах</p>
                     </div>
-                    <!-- Step 2 -->
-                    <div class="glass-panel-dark p-6 rounded-xl text-center reveal group hover:bg-slate-800 transition-colors"
+
+                    <div class="glass-panel-dark p-6 rounded-xl text-center reveal group hover:bg-slate-800/50 transition-all duration-300"
                         style="transition-delay: 100ms;">
                         <div
-                            class="w-16 h-16 bg-brand-dark border-2 border-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-400 text-xl font-bold group-hover:scale-110 transition-transform">
-                            2</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Выращивание</h3>
-                        <p class="text-gray-400 text-sm">Контроль климата, LED подсветка и точный полив для
-                            идеального
-                            стебля.</p>
+                            class="stat-number font-bold text-rose-400 mb-2 group-hover:scale-110 transition-transform">
+                            12</div>
+                        <p class="stat-caption text-gray-400">лучших гибридов<br>в коллекции</p>
                     </div>
-                    <!-- Step 3 -->
-                    <div class="glass-panel-dark p-6 rounded-xl text-center reveal group hover:bg-slate-800 transition-colors"
+
+                    <div class="glass-panel-dark p-6 rounded-xl text-center reveal group hover:bg-slate-800/50 transition-all duration-300"
                         style="transition-delay: 200ms;">
                         <div
-                            class="w-16 h-16 bg-brand-dark border-2 border-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-400 text-xl font-bold group-hover:scale-110 transition-transform">
-                            3</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Срез</h3>
-                        <p class="text-gray-400 text-sm">Ручной сбор в фазе бутона. Немедленная охлаждение до +4°C.
-                        </p>
-                    </div>
-                    <!-- Step 4 -->
-                    <div class="glass-panel-dark p-6 rounded-xl text-center reveal group hover:bg-slate-800 transition-colors"
-                        style="transition-delay: 300ms;">
-                        <div
-                            class="w-16 h-16 bg-brand-dark border-2 border-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-400 text-xl font-bold group-hover:scale-110 transition-transform">
-                            4</div>
-                        <h3 class="text-lg font-bold text-white mb-2">Логистика</h3>
-                        <p class="text-gray-400 text-sm">Термо-фургоны с поддержанием холода. Доставка за 24 часа.
-                        </p>
+                            class="stat-number font-bold text-rose-400 mb-2 group-hover:scale-110 transition-transform">
+                            11</div>
+                        <p class="stat-caption text-gray-400">фирменных<br>магазинов</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -728,10 +745,7 @@
                                 <div
                                     class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center text-white font-bold">
                                     СВ</div>
-                                <div>
-                                    <h4 class="text-white font-bold">Сергей В.</h4>
-                                    <p class="text-gray-500 text-sm">Event-агентство "Зима"</p>
-                                </div>
+
                             </div>
                         </div>
                     </div>
