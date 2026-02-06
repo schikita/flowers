@@ -628,6 +628,8 @@ function initGreenhouseGame() {
   }
 
   function showStartUI() {
+    root.classList.remove('is-game-active');
+
     resultModal.hidden = true;
     gameWrap.hidden = true;
     startScreen.hidden = false;
@@ -646,6 +648,7 @@ function initGreenhouseGame() {
   }
 
   function startGame() {
+    root.classList.add('is-game-active');
     showGameUI();
     resetGameState();
     startTimers();
@@ -738,6 +741,7 @@ function initGreenhouseGame() {
   });
 
   closeBtn.addEventListener("click", () => {
+    root.classList.remove('is-game-active');
     running = false;
     stopTimers();
     showStartUI();
@@ -792,6 +796,11 @@ onReady(() => {
   // можно повторно прогнать lucide после динамических вставок
   initLucide();
 });
+
+
+
+
+
 
 (function () {
   var photo = document.querySelector("[data-interview-photo]");
