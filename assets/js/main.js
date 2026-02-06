@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════════════════════
-// MAIN.JS - FIXED
+// MAIN.JS - WITH UNIVERSAL LAZY VIDEO LOADING
 // ═══════════════════════════════════════════════════════════════════════════
 
 // ==========================================
@@ -321,7 +321,97 @@ function initBackToTop() {
 }
 
 // ==========================================
-// LAZY VIDEO (section #video-yt)
+// LAZY VIDEO - UNIVERSAL LOADER FOR ALL VIDEOS
+// ==========================================
+
+function initLazyVideos() {
+  // Находим все видео с атрибутом data-lazy-video
+  const lazyVideos = document.querySelectorAll('video[data-lazy-video]');
+  
+  if (!lazyVideos.length) return;
+
+  console.log(`Found ${lazyVideos.length} lazy videos to load`);
+
+  // Проверка поддержки IntersectionObserver
+  if (!('IntersectionObserver' in window)) {
+    console.log('IntersectionObserver not supported, loading all videos immediately');
+    // Fallback: загружаем все видео сразу
+    lazyVideos.forEach(video => loadVideo(video));
+    return;
+  }
+
+  // Функция загрузки видео
+  function loadVideo(video) {
+    const sources = video.querySelectorAll('source[data-src]');
+    
+    if (!sources.length) {
+      console.warn('No sources with data-src found for video:', video);
+      return;
+    }
+
+    console.log('Loading video:', video);
+
+    // Переносим data-src в src для всех source
+    sources.forEach(source => {
+      const src = source.getAttribute('data-src');
+      if (src) {
+        source.src = src;
+        source.removeAttribute('data-src');
+        console.log('  Source loaded:', src);
+      }
+    });
+
+    // Загружаем видео
+    video.load();
+
+    // Если видео должно автоплейиться (muted + loop + playsinline)
+    const shouldAutoplay = video.hasAttribute('muted') && 
+                          video.hasAttribute('loop') && 
+                          video.hasAttribute('playsinline');
+
+    if (shouldAutoplay) {
+      // Небольшая задержка для плавности загрузки
+      setTimeout(() => {
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch((error) => {
+            console.log('Autoplay prevented for video:', error);
+          });
+        }
+      }, 100);
+    }
+
+    // Удаляем атрибут, чтобы не загружать повторно
+    video.removeAttribute('data-lazy-video');
+  }
+
+  // Настройки observer
+  const observerOptions = {
+    root: null,
+    rootMargin: '200px', // Начинаем загрузку за 200px до появления в viewport
+    threshold: 0.01
+  };
+
+  // Создаем observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const video = entry.target;
+        loadVideo(video);
+        observer.unobserve(video);
+      }
+    });
+  }, observerOptions);
+
+  // Наблюдаем за всеми lazy видео
+  lazyVideos.forEach(video => {
+    observer.observe(video);
+  });
+}
+
+// ==========================================
+// LEGACY: LAZY VIDEO (section #video-yt)
+// Оставлено для обратной совместимости
 // ==========================================
 
 function initLazyVideo() {
@@ -628,7 +718,7 @@ function initGreenhouseGame() {
   }
 
   function showStartUI() {
-    root.classList.remove('is-game-active');
+    root.classList.remove("is-game-active");
 
     resultModal.hidden = true;
     gameWrap.hidden = true;
@@ -648,7 +738,7 @@ function initGreenhouseGame() {
   }
 
   function startGame() {
-    root.classList.add('is-game-active');
+    root.classList.add("is-game-active");
     showGameUI();
     resetGameState();
     startTimers();
@@ -741,7 +831,7 @@ function initGreenhouseGame() {
   });
 
   closeBtn.addEventListener("click", () => {
-    root.classList.remove('is-game-active');
+    root.classList.remove("is-game-active");
     running = false;
     stopTimers();
     showStartUI();
@@ -788,7 +878,11 @@ onReady(() => {
   initAccordions();
   initRevealAnimations();
   initBackToTop();
-  initLazyVideo();
+  
+  // ВАЖНО: Инициализируем универсальный lazy loading для всех видео
+  initLazyVideos();
+  
+  initLazyVideo(); // legacy support
   initGSAPAnimations();
 
   initGreenhouseGame();
@@ -797,10 +891,9 @@ onReady(() => {
   initLucide();
 });
 
-
-
-
-
+// ==========================================
+// INTERVIEW SECTION ANIMATION
+// ==========================================
 
 (function () {
   var photo = document.querySelector("[data-interview-photo]");
@@ -829,9 +922,16 @@ onReady(() => {
   observer.observe(photo);
 })();
 
+// ==========================================
+// WINTER ROSES SLIDESHOW
+// ==========================================
+
 (function () {
   const slides = document.querySelectorAll(".photo-slide");
   const dots = document.querySelectorAll(".slide-dot");
+  
+  if (!slides.length) return;
+  
   let current = 0;
   const total = slides.length;
 
@@ -842,10 +942,12 @@ onReady(() => {
     });
 
     // Обновление точек
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("bg-white", i === index);
-      dot.classList.toggle("bg-white/40", i !== index);
-    });
+    if (dots.length) {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("bg-white", i === index);
+        dot.classList.toggle("bg-white/40", i !== index);
+      });
+    }
 
     current = index;
   }
@@ -861,50 +963,106 @@ onReady(() => {
   });
 })();
 
-const poster = document.getElementById('video-poster');
-const video = document.getElementById('march-video');
-const pauseIndicator = document.getElementById('pause-indicator');
-const playBtn = document.getElementById('play-btn');
+// ==========================================
+// MARCH VIDEO PLAYER
+// ==========================================
 
-// Запуск видео
-function startVideo(e) {
+const poster = document.getElementById("video-poster");
+const video = document.getElementById("march-video");
+const pauseIndicator = document.getElementById("pause-indicator");
+const playBtn = document.getElementById("play-btn");
+
+if (poster && video && playBtn) {
+  // Запуск видео
+  function startVideo(e) {
     if (e) e.stopPropagation();
-    
-    if (!video.querySelector('source')) {
-        const source = document.createElement('source');
-        source.src = './assets/videos/vertical-video.mp4';
-        source.type = 'video/mp4';
-        video.appendChild(source);
+
+    if (!video.querySelector("source")) {
+      const source = document.createElement("source");
+      source.src = "./assets/videos/vertical-video.mp4";
+      source.type = "video/mp4";
+      video.appendChild(source);
     }
-    
-    video.classList.remove('hidden');
-    poster.style.opacity = '0';
-    
+
+    video.classList.remove("hidden");
+    poster.style.opacity = "0";
+
     setTimeout(() => {
-        poster.style.display = 'none';
+      poster.style.display = "none";
     }, 300);
-    
+
     video.load();
     video.muted = false;
-    video.play().catch(e => console.log('Autoplay prevented:', e));
-}
+    video.play().catch((e) => console.log("Autoplay prevented:", e));
+  }
 
-// Пауза/воспроизведение при клике на видео
-function togglePause(e) {
+  // Пауза/воспроизведение при клике на видео
+  function togglePause(e) {
     e.stopPropagation();
-    
+
     if (video.paused) {
-        video.play();
+      video.play();
     } else {
-        video.pause();
-        // Показать индикатор паузы
-        pauseIndicator.style.opacity = '1';
+      video.pause();
+      // Показать индикатор паузы
+      if (pauseIndicator) {
+        pauseIndicator.style.opacity = "1";
         setTimeout(() => {
-            pauseIndicator.style.opacity = '0';
+          pauseIndicator.style.opacity = "0";
         }, 800);
+      }
     }
+  }
+
+  poster.addEventListener("click", startVideo);
+  playBtn.addEventListener("click", startVideo);
+  video.addEventListener("click", togglePause);
 }
 
-poster.addEventListener('click', startVideo);
-playBtn.addEventListener('click', startVideo);
-video.addEventListener('click', togglePause);
+// ==========================================
+// ANALYTICS - LAZY LOADING
+// ==========================================
+
+window.addEventListener("load", () => {
+  setTimeout(loadYandexMetrika, 3000);
+  setTimeout(loadGTM, 4000);
+});
+
+function loadYandexMetrika() {
+  (function (m, e, t, r, i, k, a) {
+    m[i] =
+      m[i] ||
+      function () {
+        (m[i].a = m[i].a || []).push(arguments);
+      };
+    m[i].l = 1 * new Date();
+    for (var j = 0; j < document.scripts.length; j++) {
+      if (document.scripts[j].src === r) return;
+    }
+    ((k = e.createElement(t)),
+      (a = e.getElementsByTagName(t)[0]),
+      (k.async = 1),
+      (k.src = r),
+      a.parentNode.insertBefore(k, a));
+  })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+  ym(16707172, "init", {
+    webvisor: true,
+    clickmap: true,
+    accurateTrackBounce: true,
+    trackLinks: true,
+  });
+}
+
+function loadGTM() {
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, "script", "dataLayer", "GTM-KRVNNK");
+}

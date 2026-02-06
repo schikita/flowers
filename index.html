@@ -248,9 +248,9 @@
     <!-- HERO SECTION -->
     <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <video class="w-full h-full object-cover" autoplay muted loop playsinline
+            <video class="w-full h-full object-cover" muted loop playsinline data-lazy-video
                 poster="./assets/img/bg-hero-poster.jpg">
-                <source src="./assets/videos/bg-heros.mp4" type="video/mp4">
+                <source data-src="./assets/videos/bg-heros.mp4" type="video/mp4">
                 <img src="./assets/img/bg-hero-poster.jpg" alt="Winter Greenhouse" loading="lazy"
                     class="w-full h-full object-cover">
             </video>
@@ -388,9 +388,10 @@
                                     внимание,
                                 </p>
                                 <p class="typewriter-line" style="--delay: 3.5s;">все пахнут одинаково.</p>
-                                <p class="typewriter-line" style="--delay: 4s;">Потому что они проходят газацию: так цветы избавляют от вредителей и консервируют...
+                                <p class="typewriter-line" style="--delay: 4s;">Потому что они проходят газацию: так
+                                    цветы избавляют от вредителей и консервируют...
                                     Поэтому к нам приезжает уже не совсем живой цветок.</p>
-                                
+
                             </div>
                         </div>
                     </aside>
@@ -516,8 +517,9 @@
                     <!-- ВИДЕО (слева на десктопе) -->
                     <div class="video-feature-media">
                         <div class="video-feature-box">
-                            <video controls poster="./assets/img/video-poster.jpg" class="video-feature-video">
-                                <source src="./assets/videos/video-block.mp4" type="video/mp4">
+                            <video controls poster="./assets/img/video-poster.jpg" class="video-feature-video"
+                                data-lazy-video>
+                                <source data-src="./assets/videos/video-block.mp4" type="video/mp4">
                                 Ваш браузер не поддерживает видео.
                             </video>
                         </div>
@@ -666,7 +668,8 @@
 
                 <div class="assortment-text mb-16 reveal">
                     <p class="text-gray-300 leading-relaxed">
-                        Сейчас в теплицах растет 20 сортов. Здесь собрали 12 одноголовых и 8 кустовых лучших и самых популярных гибридов. Из них
+                        Сейчас в теплицах растет 20 сортов. Здесь собрали 12 одноголовых и 8 кустовых лучших и самых
+                        популярных гибридов. Из них
                         наиболее покупаемые розы – это белая с розовой каймой «джумилия» и красная «ред наоми».
                     </p>
                 </div>
@@ -706,8 +709,8 @@
     <section id="winter-roses" class="relative py-24 overflow-hidden">
         <!-- Видео -->
         <div class="absolute inset-0 z-0">
-            <video autoplay muted loop playsinline class="w-full h-full object-cover">
-                <source src="./assets/videos/rose-winter-bg.mp4" type="video/mp4">
+            <video data-lazy-video muted loop playsinline class="w-full h-full object-cover">
+                <source data-src="./assets/videos/rose-winter-bg.mp4" type="video/mp4">
             </video>
         </div>
 
@@ -778,12 +781,11 @@
 
 
     <!-- Section: Зимний уход -->
-    <!-- Section: Зимний уход -->
     <section id="winter-care" class="relative py-24 min-h-screen flex items-start justify-center overflow-hidden">
         <!-- Видео-фон -->
         <div class="absolute inset-0">
-            <video autoplay muted loop playsinline class="w-full h-full object-cover">
-                <source src="./assets/videos/winter-greenhouse.mp4" type="video/mp4">
+            <video data-lazy-video muted loop playsinline class="w-full h-full object-cover">
+                <source data-src="./assets/videos/winter-greenhouse.mp4" type="video/mp4">
             </video>
             <!-- Затемнение -->
             <div class="absolute inset-0 bg-slate-900/75"></div>
@@ -796,7 +798,7 @@
             <div
                 class="glass-panel-dark p-8 md:p-12 rounded-2xl backdrop-blur-sm bg-slate-900/60 border border-white/10">
 
-               
+
                 <div class="space-y-6 text-lg text-gray-200 leading-relaxed">
                     <p>
                         Зимой ухаживать и за цветами, и за овощами, которые также выращивают на предприятии, непросто. У
