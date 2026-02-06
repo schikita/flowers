@@ -1666,9 +1666,9 @@ body {
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(15, 23, 42, 1),
-    rgba(15, 23, 42, 0.80),
-    rgba(15, 23, 42, 0.30)
+    rgba(15, 23, 42, 0.616),
+    rgba(15, 23, 42, 0.363),
+    rgba(15, 23, 42, 0.13)
   );
 }
 
@@ -1991,6 +1991,7 @@ body {
 
 #video-feature {
   background: url('../img/bg-video-section.jpg');
+  background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -2122,6 +2123,8 @@ body {
   overflow: hidden;
   padding: 96px 0;
   background: url('../img/bg-sueta.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .holiday-rush__bg {
@@ -2139,7 +2142,7 @@ body {
 .holiday-rush__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(15, 23, 42, 0.80);
+  background: rgba(15, 23, 42, 0.4);
 }
 
 .holiday-rush__container {
