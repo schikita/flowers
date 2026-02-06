@@ -1383,8 +1383,9 @@ body {
   }
 
   .site-footer {
-    margin-top: 80px;
+     
      padding: 44px var(--spacing-md, 16px);
+     padding-top: 40px;
   }
 
   .footer-credits {
@@ -1448,9 +1449,9 @@ body {
     max-width: 100%;
   }
 
-  .site-footer {
-    margin-top: 60px;
+  .site-footer {    
     padding: 36px var(--spacing-md);
+     padding-top: 40px;
   }
 
   .footer-credits {
@@ -1505,9 +1506,9 @@ body {
     font-size: 0.85rem;
   }
 
-  .site-footer {
-    margin-top: 48px;
+  .site-footer {    
     padding: 28px var(--spacing-md);
+     padding-top: 40px;
   }
 
   .footer-credits p {
@@ -1553,9 +1554,9 @@ body {
     font-size: 0.8rem;
   }
 
-  .site-footer {
-    margin-top: 36px;
+  .site-footer {    
     padding: 20px 12px;
+     padding-top: 40px;
   }
 
   .footer-credits {
